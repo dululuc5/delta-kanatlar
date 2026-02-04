@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delta Kanatlar Topluluğu - Yönetici Paneli</title>
+</head>
+<body>
+<h2>Delta Kanatlar Topluluğu - Yönetici Paneli</h2>
+
+<h3>Üye Ekle</h3>
+<form method="post">
+    <input name="name" placeholder="İsim Soyisim"><br><br>
+    <input name="phone" placeholder="Telefon"><br><br>
+    <input name="school_no" placeholder="Okul No"><br><br>
+    <input name="class" placeholder="Sınıf"><br><br>
+    <button type="submit">Üye Ekle</button>
+</form>
+
+<h3>Üyeler Listesi</h3>
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<th>#</th>
+<th>İsim Soyisim</th>
+<th>Telefon</th>
+<th>Okul No</th>
+<th>Sınıf</th>
+</tr>
+{% for i, member in enumerate(members, start=1) %}
+<tr>
+<td>{{ i }}</td>
+<td>{{ member['name'] }}</td>
+<td>{{ member['phone'] }}</td>
+<td>{{ member['school_no'] }}</td>
+<td>{{ member['class'] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<form method="post" action="/export">
+<button type="submit">Excel İndir</button>
+</form>
+
+<br>
+<a href="/gpt2">GPT-2 Simülasyonu (İsimleri Göster)</a>
+</body>
+</html>
